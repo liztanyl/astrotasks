@@ -99,9 +99,11 @@ export default function App() {
         >
           <Grid item xs={12} md={5} sx={gridItemStyle}>
             <Pomodoro
+              loggedIn={loggedIn}
               timeLeft={timeLeft}
               setTimeLeft={setTimeLeft}
               currentTask={currentTask}
+              setCurrentTask={setCurrentTask}
               timerActive={timerActive}
               setTimerActive={setTimerActive}
             />

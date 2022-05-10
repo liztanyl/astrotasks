@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Typography } from '@mui/material';
+import { sendAlert } from '../../helper-functions/helperFunctions.mjs';
 
 const formatTimer = (ms) => {
   // calculate minutes & seconds
@@ -15,7 +16,7 @@ const formatTimer = (ms) => {
 };
 
 export default function Timer({
-  timerActive, updateMode, setTimeLeft, timeLeft,
+  timerActive, setTimerActive, mode, updateMode, setTimeLeft, timeLeft,
 }) {
   const delayInMilliseconds = 1000;
 
@@ -26,7 +27,12 @@ export default function Timer({
     if (timerActive && timeLeft > 0) {
       setTimeLeft(timeLeft - delayInMilliseconds);
     }
-    if (timeLeft <= 0) updateMode();
+    if (timeLeft <= 0) {
+      mode[0] === 'work' || mode[0] === 'work demo'
+        ? sendAlert(setTimerActive, 'break')
+        : sendAlert(setTimerActive, 'work');
+      updateMode();
+    }
   };
 
   useEffect(() => {

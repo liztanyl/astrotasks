@@ -1,48 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Stack, Box } from '@mui/material';
+import { Stack } from '@mui/material';
 import Timer from './Timer.jsx';
 import TimerButtons from './TimerButtons.jsx';
 import CurrentTaskContainer from './CurrentTaskContainer.jsx';
 
 const minsToMilliseconds = (mins) => mins * 60 * 1000;
 
-const noCurrentTaskStyle = {
-  height: '25%',
-  width: '90%',
-  p: 3,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  textAlign: 'center',
-};
-
-const currentTaskStyle = {
-  borderRadius: 1,
-  // borderWidth: 3,
-  // borderStyle: 'solid',
-  // borderColor: 'primary.main',
-  backgroundColor: 'primary.main',
-  color: 'white',
-};
-
-const breakStyle = {
-  borderWidth: 3,
-  borderStyle: 'solid',
-  borderColor: 'primary.main',
-  backgroundColor: 'none',
-  color: 'auto',
-};
-
 export default function Pomodoro({
-  timeLeft, setTimeLeft, currentTask, timerActive, setTimerActive,
+  loggedIn, timeLeft, setTimeLeft, currentTask, setCurrentTask, timerActive, setTimerActive,
 }) {
   const WORK = 'work';
   const SHORTBREAK = 'short break';
   const LONGBREAK = 'long break';
+  const WORKDEMO = 'work demo';
+  const SHORTBREAKDEMO = 'short break demo';
   const modeList = [
     WORK, SHORTBREAK,
     WORK, SHORTBREAK,
-    WORK, SHORTBREAK,
+    WORKDEMO, SHORTBREAKDEMO,
     WORK, LONGBREAK,
   ];
 
@@ -62,10 +37,12 @@ export default function Pomodoro({
   };
 
   const updateTimeOnMode = () => {
-    let minutes = 0.2;
+    let minutes = 0;
     if (mode[0] === WORK) minutes = 25;
     if (mode[0] === SHORTBREAK) minutes = 5;
     if (mode[0] === LONGBREAK) minutes = 20;
+    if (mode[0] === WORKDEMO) minutes = 0.1;
+    if (mode[0] === SHORTBREAKDEMO) minutes = 0.1;
     setTimeLeft(minsToMilliseconds(minutes));
   };
 
@@ -79,9 +56,11 @@ export default function Pomodoro({
     >
       <Timer
         timerActive={timerActive}
+        setTimerActive={setTimerActive}
         timeLeft={timeLeft}
         setTimeLeft={setTimeLeft}
-        updateTimeOnMode={updateTimeOnMode}
+        mode={mode}
+        updateMode={updateMode}
       />
       <TimerButtons
         timerActive={timerActive}
@@ -89,12 +68,13 @@ export default function Pomodoro({
         updateTimeOnMode={updateTimeOnMode}
         updateMode={updateMode}
       />
-      <Box sx={[noCurrentTaskStyle,
-        currentTask && mode[0] === WORK && currentTaskStyle,
-        mode[0] !== WORK && breakStyle]}
-      >
-        {currentTask && <CurrentTaskContainer currentTask={currentTask} mode={mode} />}
-      </Box>
+      <CurrentTaskContainer
+        mode={mode}
+        loggedIn={loggedIn}
+        currentTask={currentTask}
+        setCurrentTask={setCurrentTask}
+        setTimerActive={setTimerActive}
+      />
     </Stack>
   );
 }
