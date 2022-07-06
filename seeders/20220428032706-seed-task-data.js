@@ -21,7 +21,7 @@ module.exports = {
       email: 'b@b.com',
       password: '0789b45d3af07465658bc0daeddb25a4dc61a1c51ec680f8b7e8613a99c21eef7b6f2f2ae4d636f363221af506d7bf8ed4573b6ed36fecb0ed71094ec614e2ee',
       name: 'Ba',
-      bootcamp: 'FTBC6',
+      bootcamp: 'FTBC7',
       created_at: new Date(),
       updated_at: new Date(),
     }]);

@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
-import { Container, Grid, Typography } from '@mui/material';
+import {
+  Container, Grid, Typography, Button,
+} from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import SignupLogin from './components/SignupLogin/SignupLogin.jsx';
@@ -18,7 +20,6 @@ const theme = createTheme({
       main: '#0336FF',
     },
     secondary: {
-      // main: '#FFDE03',
       main: '#eed00e',
     },
     info: {
@@ -76,6 +77,12 @@ export default function App() {
     }
   };
 
+  const handleLogout = () => {
+    axios.get('/logout').then(() => {
+      setLoggedIn(false);
+    });
+  };
+
   useEffect(() => { checkAuth(); }, []);
 
   return (
@@ -130,6 +137,18 @@ export default function App() {
             {loggedIn && <NewTaskDialog refreshTasks={refreshTasks} />}
           </Grid>
         </Grid>
+        {loggedIn
+        && (
+        <Grid
+          container
+          sx={{
+            padding: 5,
+            justifyContent: 'center',
+          }}
+        >
+          <Button variant="contained" color="warning" onClick={handleLogout}>Log Out</Button>
+        </Grid>
+        )}
       </Container>
     </ThemeProvider>
   );

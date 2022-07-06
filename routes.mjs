@@ -14,6 +14,7 @@ export default function routes(app) {
   app.post('/signup', usersController.create);
   app.post('/login', usersController.login);
   app.post('/check-auth', usersController.checkAuth);
+  app.get('/logout', usersController.logout);
   app.post('/tasks', tasksController.index);
   app.post('/tasks/add', tasksController.add);
   app.post('/task/:id', tasksController.show);

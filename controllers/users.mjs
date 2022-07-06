@@ -92,9 +92,24 @@ export default function initUsersController(db) {
     }
   };
 
+  const logout = async (req, res) => {
+    try {
+      res.clearCookie('login')
+        .clearCookie('userId')
+        .clearCookie('userName')
+        .clearCookie('bootcamp');
+
+      res.sendStatus(200);
+    } catch (error) {
+      console.log(error.message);
+      res.send({ errors: error });
+    }
+  };
+
   return {
     create,
     login,
     checkAuth,
+    logout,
   };
 }
