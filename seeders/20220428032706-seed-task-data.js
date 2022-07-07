@@ -11,17 +11,24 @@ module.exports = {
     */
 
     await queryInterface.bulkInsert('users', [{
-      email: 'a@a.com',
+      email: 'student-a@rocket.com',
       password: '0789b45d3af07465658bc0daeddb25a4dc61a1c51ec680f8b7e8613a99c21eef7b6f2f2ae4d636f363221af506d7bf8ed4573b6ed36fecb0ed71094ec614e2ee',
-      name: 'Aa',
-      bootcamp: 'FTBC6',
+      name: 'Angela',
+      bootcamp: 'FTBC7',
       created_at: new Date(),
       updated_at: new Date(),
     }, {
-      email: 'b@b.com',
+      email: 'student-b@rocket.com',
       password: '0789b45d3af07465658bc0daeddb25a4dc61a1c51ec680f8b7e8613a99c21eef7b6f2f2ae4d636f363221af506d7bf8ed4573b6ed36fecb0ed71094ec614e2ee',
-      name: 'Ba',
-      bootcamp: 'FTBC7',
+      name: 'Bobby',
+      bootcamp: 'FTBC8',
+      created_at: new Date(),
+      updated_at: new Date(),
+    }, {
+      email: 'luna@astrotasks.com',
+      password: '0789b45d3af07465658bc0daeddb25a4dc61a1c51ec680f8b7e8613a99c21eef7b6f2f2ae4d636f363221af506d7bf8ed4573b6ed36fecb0ed71094ec614e2ee',
+      name: 'Luna',
+      bootcamp: '',
       created_at: new Date(),
       updated_at: new Date(),
     }]);
