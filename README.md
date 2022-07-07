@@ -24,10 +24,8 @@ _\* FTBC stands for **Full-time Bootcamp**_ -->
 
 ### App Demo
 
-> Watch the app demo on YouTube
+> [Watch the app demo on YouTube](https://youtu.be/GiCIMvsridM)
 > (Note: Logout button was only added after this video was recorded)
->
-> [Screenshot with link to video]()
 
 ## Features
 
@@ -42,7 +40,7 @@ Consists of 6 types of lists:
 5. Project
 6. Others
 
-For RA students, each day's coursework is fetched from the [Rocket Academy Scheduler code]() and added to their **Pre-Class** and **Post-Class** task lists. This enables them to see at a glance all the coursework they need to complete for that day.
+For RA students, each day's coursework is fetched from the [Rocket Academy Scheduler code](https://github.com/rocketacademy/scheduler/tree/main/src/data) and added to their **Pre-Class** and **Post-Class** task lists. This enables them to see at a glance all the coursework they need to complete for that day.
 
 New tasks are fetched and added to the task lists every day at 10am (when class is in session).
 
